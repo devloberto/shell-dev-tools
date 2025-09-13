@@ -2,6 +2,10 @@
 
 handy tools for developers using bash or zsh
 
+## installation
+
+just clone the repository and source the `shell-dev-tools.sh` script in your `.bashrc`, `.zshrc` or whatever
+
 ## provided commands
 
 ### `git_delete_all_branches_but_default`
