@@ -1,0 +1,17 @@
+name: tests
+
+on: [push, workflow_dispatch]
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-compose-action@v1
+        with:
+          version: v2.36.0
+      - name: docker compose up
+        run: docker compose up -d --build
+      - name: run tests
+        run: docker compose exec shell-dev-tools bashunit
+
