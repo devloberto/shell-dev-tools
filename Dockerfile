@@ -1,11 +1,11 @@
-FROM debian:trixie-20240812
+FROM debian:13.1
 
 ENV bashunit_dir='/typeddevs'
 ENV bashunit_version='0.14.0'
 ENV bashunit_hash='84822a2f2d3a84646abad5fe26e6d49a952c6e5ea08e3752443d583346cc4d56'
 
 # bashunit installation dependencies
-RUN apt update; apt install -y curl perl git; rm -rf /var/lib/apt/lists/*
+RUN apt-get update; apt-get install -y curl perl git; rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p $bashunit_dir
 RUN curl -o /tmp/install.sh https://bashunit.typeddevs.com/install.sh
@@ -18,10 +18,17 @@ RUN bashunit --version
 
 RUN groupadd -g 1000 dev && useradd -m -u 1000 -g dev dev
 
-WORKDIR /home/dev
+WORKDIR /home/dev/shell-dev-tools
 
-RUN echo "alias ll='ls -halF --color'" >> /root/.bashrc
-RUN echo "alias ll='ls -halF --color'" >> /home/dev/.bashrc
+RUN --mount=type=bind,source=bashrc,target=/tmp/bashrc \
+  cat /tmp/bashrc >> /root/.bashrc && \
+  cat /tmp/bashrc >> /home/dev/.bashrc
+
+USER dev
+
+RUN git config --global init.defaultBranch master && \
+  git config --global user.email "shell@dev.tools" && \
+  git config --global user.name "dev"
 
 ENTRYPOINT ["/bin/bash"]
 

@@ -6,9 +6,6 @@ function set_up() {
   ROOT_DIR="$(dirname "${BASH_SOURCE[0]}")/.."
   source "$ROOT_DIR/src/git_delete_all_branches_but_default.sh"
 
-  git config --global user.email "shell@dev.tools"
-  git config --global user.name "dev"
-
   mkdir "$git_repo_path"
   cd "$git_repo_path" || exit 1
 }

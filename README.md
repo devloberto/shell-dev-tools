@@ -22,28 +22,34 @@ Supported default branch names:
 
 ## development
 
-* the tools are developed inside of a docker container
+* the tools are developed inside a docker container
 * all scripts are tested by [bashunit](https://github.com/TypedDevs/bashunit)
 
-### setup to contribute
+### setup
 
 * clone the repository
 
     ```bash
-    git clone ssh://gitea@yunohost.fritz.box:2217/flo_barth/shell-dev-tools.git
+    git clone https://gitub.com/devloberto/shell-dev-tools.git
     cd shell-dev-tools
     ```
 
 * build the docker image
 
     ```bash
-    docker build -t shell-dev-tools:debian-trixie .
+    docker compose up -d --build
     ```
-* run the container and enter its interactive shell
+
+* interactively enter the container's shell for testing
 
     ```bash
-    docker run --rm -it --user dev --name shell-dev-tools shell-dev-tools:debian-trixie
-      
+    docker compose exec shell-dev-tools bash
+    ```
+
+    or directly run the unit tests
+
+    ```bash
+    docker compose exec shell-dev-tools bashunit tests/
     ```
 
 ## _TODO_

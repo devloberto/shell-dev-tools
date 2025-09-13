@@ -1,0 +1,12 @@
+services:
+  shell-dev-tools:
+    container_name: shell-dev-tools
+    build:
+      context: .
+      dockerfile: Dockerfile
+      tags:
+        - shell-dev-tools:debian-trixie
+    volumes:
+      - $PWD:/home/dev/shell-dev-tools
+    entrypoint: tail -f /dev/null
+
