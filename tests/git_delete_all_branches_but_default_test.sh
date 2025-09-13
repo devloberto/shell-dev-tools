@@ -14,16 +14,16 @@ function set_up() {
 }
 
 function provide_initial_branch_names() {
-  local branch_names=("master" "main" "trunk" "stable")
+  local branch_names=("master" "main" "trunk" "stable" "mainline" "default")
   echo "${branch_names[@]}"
 }
 
 # data_provider provide_initial_branch_names
 function test_git_delete_all_branches_but_default() {
   # setup
-  main_branch_name="$1"
-  git init --initial-branch "$main_branch_name"
-  git config init.defaultBranch "$main_branch_name"
+  default_branch_name="$1"
+  git init --initial-branch "$default_branch_name"
+  git config init.defaultBranch "$default_branch_name"
   touch init-file.txt
   git add .
   git commit -m "initial commit"
@@ -39,14 +39,12 @@ function test_git_delete_all_branches_but_default() {
   touch 3-file.txt
   git add .
   git commit -m "third feature"
+
+  # execution
   git_delete_all_branches_but_default
 
-  assert_equals "$main_branch_name" "$(git_delete_all_branches_but_default)"
-  # execution @TODO run git_delete_all_branches_but_default
-  # git_delete_all_branches_but_main
-  #
-  # assertion @TODO and assert that only git_main_branch exists
-  # assert_equals "$main_branch_name" "$(git branch)"
+  # assertion
+  assert_equals "* $default_branch_name" "$(git branch)"
 }
 
 function tear_down() {

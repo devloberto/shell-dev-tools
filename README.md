@@ -1,6 +1,20 @@
-# shell tools
+# shell dev tools
 
 handy tools for developers using bash or zsh
+
+## provided commands
+
+### `git_delete_all_branches_but_default`
+
+Delete all branches but the default branch. <br>
+Supported default branch names:
+
+* master
+* main
+* trunk
+* stable
+* mainline
+* default
 
 ## development
 
@@ -28,3 +42,9 @@ handy tools for developers using bash or zsh
       
     ```
 
+## _TODO_
+
+Test automation for zsh. <br>
+Currently only bash support is automatically tested by bashunit.
+zsh support is tested manually only at the moment. <br>
+Maybe something like [shellspec](https://github.com/shellspec/shellspec) should be used which supports both bash and zsh.
