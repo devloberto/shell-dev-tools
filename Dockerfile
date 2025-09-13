@@ -1,8 +1,8 @@
 FROM debian:13.1
 
 ENV bashunit_dir='/typeddevs'
-ENV bashunit_version='0.14.0'
-ENV bashunit_hash='84822a2f2d3a84646abad5fe26e6d49a952c6e5ea08e3752443d583346cc4d56'
+ENV bashunit_version='0.23.0'
+ENV bashunit_hash='7043c1818016f330ee12671a233f89906f0d373f3b2aa231a8c40123be5a222b'
 
 # bashunit installation dependencies
 RUN apt-get update; apt-get install -y curl perl git; rm -rf /var/lib/apt/lists/*

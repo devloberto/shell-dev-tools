@@ -20,6 +20,18 @@ Supported default branch names:
 * mainline
 * default
 
+### strcnt
+
+Count the number of characters in a string.
+
+### unix_now
+
+Get the current unix timestamp.
+
+### unix_to_date
+
+Convert a unix timestamp to a human readable datetime.
+
 ## development
 
 * the tools are developed inside a docker container
