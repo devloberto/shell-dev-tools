@@ -49,7 +49,7 @@ Supported default branch names:
     or directly run the unit tests
 
     ```bash
-    docker compose exec shell-dev-tools bashunit tests/
+    docker compose exec shell-dev-tools bashunit
     ```
 
 ## _TODO_
