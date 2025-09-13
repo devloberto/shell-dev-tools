@@ -1,5 +1,7 @@
 # shell dev tools
 
+![tests status](https://github.com/devloberto/shell-dev-tools/actions/workflows/test.yml/badge.svg)
+
 handy tools for developers using bash or zsh
 
 ## installation
@@ -20,15 +22,15 @@ Supported default branch names:
 * mainline
 * default
 
-### strcnt
+### `strcnt`
 
 Count the number of characters in a string.
 
-### unix_now
+### `unix_now`
 
 Get the current unix timestamp.
 
-### unix_to_date
+### `unix_to_date`
 
 Convert a unix timestamp to a human readable datetime.
 
