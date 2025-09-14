@@ -18,6 +18,6 @@ test_dockerll() {
   # output shell-dev-tools container
   local second_line=$(echo "$output" | sed -n '2p') # @TODO: what if it's not the 2. line?
   assert_contains "shell-dev-tools " "$second_line"
-  assert_matches " Up [0-9]+ minutes " "$second_line"
+  assert_matches " Up [0-9]+ (seconds|minutes) " "$second_line"
   assert_contains " shell-dev-tools_default" "$second_line"
 }
