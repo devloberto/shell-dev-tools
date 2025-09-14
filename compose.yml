@@ -8,5 +8,5 @@ services:
         - shell-dev-tools:debian-trixie
     volumes:
       - $PWD:/home/dev/shell-dev-tools
-    entrypoint: tail -f /dev/null
+      - /var/run/docker.sock:/var/run/docker.sock:ro
 

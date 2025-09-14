@@ -1,6 +1,6 @@
 # shell dev tools
 
-![tests status](https://github.com/devloberto/shell-dev-tools/actions/workflows/test.yml/badge.svg)
+[![tests status](https://github.com/devloberto/shell-dev-tools/actions/workflows/test.yml/badge.svg)](https://github.com/devloberto/shell-dev-tools/actions/workflows/test.yml)
 
 handy tools for developers using bash or zsh
 
