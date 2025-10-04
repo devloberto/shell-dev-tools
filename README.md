@@ -34,6 +34,10 @@ Get the current unix timestamp.
 
 Convert a unix timestamp to a human readable datetime.
 
+### `dockerll`
+
+List all containers in a neat way.
+
 ## development
 
 * the tools are developed inside a docker container
