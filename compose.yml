@@ -8,5 +8,5 @@ services:
         - shell-dev-tools:debian-trixie
     volumes:
       - $PWD:/home/dev/shell-dev-tools
-      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /var/run/docker.sock:/var/run/docker.sock
 
