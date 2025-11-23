@@ -38,6 +38,11 @@ Convert a unix timestamp to a human readable datetime.
 
 List all containers in a neat way.
 
+### `try_docker`
+
+Run a container temporarily to explore a docker image.
+See `try_docker --help` for more information.
+
 ## development
 
 * the tools are developed inside a docker container
