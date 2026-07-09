@@ -4,7 +4,7 @@ git_repo_path="/tmp/test-repo-$(date +%s)" # append unix timestamp to avoid unex
 
 function set_up() {
   ROOT_DIR="$(dirname "${BASH_SOURCE[0]}")/.."
-  source "$ROOT_DIR/src/git_delete_all_branches_but_default.sh"
+  source "$ROOT_DIR/src/git.sh"
 
   mkdir "$git_repo_path"
   cd "$git_repo_path" || exit 1
@@ -42,6 +42,42 @@ function test_git_delete_all_branches_but_default() {
 
   # assertion
   assert_equals "* $default_branch_name" "$(git branch)"
+}
+
+function test_git_cleanup_branches() {
+  # setup - create remote bare repo
+  local remote_repo_path="/tmp/test-remote-repo-$(date +%s)"
+  git init --bare "$remote_repo_path"
+
+  # setup - create local repo with remote
+  git init --initial-branch master
+  git remote add origin "$remote_repo_path"
+  touch init-file.txt
+  git add .
+  git commit -m "initial commit"
+  git push -u origin master
+
+  # setup - create and push a branch
+  git checkout -b feature-branch
+  touch feature-file.txt
+  git add .
+  git commit -m "feature commit"
+  git push -u origin feature-branch
+
+  # setup - go back to master
+  git checkout master
+
+  # setup - delete the remote branch (simulating it being deleted remotely)
+  git push origin --delete feature-branch
+
+  # execution
+  git_cleanup_branches
+
+  # assertion - feature-branch should be deleted locally
+  assert_equals "* master" "$(git branch)"
+
+  # cleanup
+  rm -rf "$remote_repo_path"
 }
 
 function tear_down() {

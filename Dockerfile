@@ -8,7 +8,7 @@ ENV bashunit_hash='7043c1818016f330ee12671a233f89906f0d373f3b2aa231a8c40123be5a2
 RUN apt-get update; apt-get install -y curl perl git docker.io sudo; rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p $bashunit_dir
-RUN curl -o /tmp/install.sh https://bashunit.typeddevs.com/install.sh
+RUN curl -o /tmp/install.sh https://bashunit.com/install.sh
 RUN bash /tmp/install.sh $bashunit_dir $bashunit_version; ln -s $bashunit_dir/bashunit /usr/bin/bashunit; chmod +x $bashunit_dir/bashunit
 
 # verify the sha256sum for bashunit 0.14.0

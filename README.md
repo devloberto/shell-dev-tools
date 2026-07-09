@@ -22,6 +22,11 @@ Supported default branch names:
 * mainline
 * default
 
+### `git_cleanup_branches`
+
+Delete local branches that have been deleted on the remote. <br>
+Runs `git fetch --prune` and then removes local branches whose remote tracking branches no longer exist.
+
 ### `strcnt`
 
 Count the number of characters in a string.
